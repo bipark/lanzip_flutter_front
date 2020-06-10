@@ -5,6 +5,8 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'dart:developer';
 
+import 'package:carousel_slider/carousel_slider.dart';
+
 class ContentListState extends State<ContentList> {
 
   List _contentList = List<dynamic>();
@@ -25,13 +27,41 @@ class ContentListState extends State<ContentList> {
     setState(()=>{
       _contentList = data["contents"]
     });
-    print(_contentList);
-    print(_contentList.runtimeType);
+//    log("$_contentList");
+//    print(_contentList.runtimeType);
   }
 
+//  ListTile _listViewDetail(BuildContext context, int index) {
+//    List _photos = _contentList[index]["photos"];
+//    print(_photos);
+//    return ListTile(
+//      title: _contentList[index]["user"]["profile"] != null ? Image.network(_contentList[index]["user"]["profile"]) : null,
+//      subtitle: Text(_contentList[index]["content"])
+//    );
+//  }
+
   ListTile _listViewDetail(BuildContext context, int index) {
+    List _photos = _contentList[index]["photos"];
+    print(_photos);
     return ListTile(
-        title: Text(_contentList[index]["content"])
+        title: CarouselSlider(
+          options: CarouselOptions(height: 400.0),
+          items: _photos.map((i) {
+            return Builder(
+              builder: (BuildContext context) {
+                return Container(
+                    width: MediaQuery.of(context).size.width,
+                    margin: EdgeInsets.symmetric(horizontal: 5.0),
+                    decoration: BoxDecoration(
+                        color: Colors.amber
+                    ),
+                    child: Text('text $i', style: TextStyle(fontSize: 16.0),)
+                );
+              },
+            );
+          }).toList(),
+        ),
+        subtitle: Text(_contentList[index]["content"])
     );
   }
 
