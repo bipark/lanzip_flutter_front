@@ -6,6 +6,7 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:lanzip/widgets/content_detail.dart';
 
 class ContentListState extends State<ContentList> {
 
@@ -44,24 +45,30 @@ class ContentListState extends State<ContentList> {
     List _photos = _contentList[index]["photos"];
     print(_photos);
     return ListTile(
-        title: CarouselSlider(
-          options: CarouselOptions(height: 400.0),
-          items: _photos.map((i) {
-            return Builder(
-              builder: (BuildContext context) {
-                return Container(
-                    width: MediaQuery.of(context).size.width,
-                    margin: EdgeInsets.symmetric(horizontal: 5.0),
-                    decoration: BoxDecoration(
-                        color: Colors.amber
-                    ),
-                    child: Text('text $i', style: TextStyle(fontSize: 16.0),)
-                );
-              },
-            );
-          }).toList(),
+      title: CarouselSlider(
+        options: CarouselOptions(height: 300.0),
+        items: _photos.map((i) {
+          return Builder(
+            builder: (BuildContext context) {
+              return Container(
+                  width: MediaQuery.of(context).size.width,
+                  margin: EdgeInsets.symmetric(horizontal: 5.0),
+                  decoration: BoxDecoration(
+                      color: Colors.amber
+                  ),
+                  child: Text('text $i', style: TextStyle(fontSize: 16.0),)
+              );
+            },
+          );
+        }).toList(),
+      ),
+      onTap: ()=>{
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context)=>ContentDetail())
         ),
-        subtitle: Text(_contentList[index]["content"])
+      },
+      subtitle: Text(_contentList[index]["content"]),
     );
   }
 
