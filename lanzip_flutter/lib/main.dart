@@ -3,10 +3,15 @@ import 'package:lanzip/widgets/content.dart';
 import 'package:provider/provider.dart';
 
 import 'package:lanzip/widgets/content_detail.dart';
+import 'package:lanzip/widgets/login.dart';
 
 void main() => runApp(MyApp());
 
+
 class MyApp extends StatelessWidget {
+
+  var login = false;
+
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
@@ -15,8 +20,9 @@ class MyApp extends StatelessWidget {
         initialRoute: '/',
         routes: {
           '/main': (context) => ContentList(),
-          '/detail': (context) => ContentDetail(),
+          '/detail': (context) => login ? ContentDetail() : Login(),
         },
+        navigatorObservers: [],
         theme: ThemeData(
           primarySwatch: Colors.red,
           visualDensity: VisualDensity.adaptivePlatformDensity,
@@ -26,3 +32,4 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+

@@ -41,7 +41,7 @@ class ContentListState extends State<ContentList> {
 
   ListTile _listViewDetail(BuildContext context, int index) {
     List _photos = _contentList[index]["photos"];
-    print(_photos);
+    //print(_photos);
     return ListTile(
       title: CarouselSlider(
         options: CarouselOptions(height: 300.0),
