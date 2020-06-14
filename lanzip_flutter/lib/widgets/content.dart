@@ -28,8 +28,6 @@ class ContentListState extends State<ContentList> {
     setState(()=>{
       _contentList = data["contents"]
     });
-//    log("$_contentList");
-//    print(_contentList.runtimeType);
   }
 
 //  ListTile _listViewDetail(BuildContext context, int index) {
@@ -63,10 +61,7 @@ class ContentListState extends State<ContentList> {
         }).toList(),
       ),
       onTap: ()=>{
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context)=>ContentDetail())
-        ),
+        Navigator.pushNamed(context, '/detail')
       },
       subtitle: Text(_contentList[index]["content"]),
     );
