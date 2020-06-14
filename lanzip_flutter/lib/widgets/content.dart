@@ -7,6 +7,7 @@ import 'dart:developer';
 
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:lanzip/widgets/content_detail.dart';
+import 'package:provider/provider.dart';
 
 class ContentListState extends State<ContentList> {
 
