@@ -19,8 +19,8 @@ class ContentListState extends State<ContentList> {
     _getContentLists();
   }
 
+  // http - async GET
   Future<String> _getContentLists() async{
-    log("---------------- ---------------");
     http.Response res = await http.get(
         Uri.encodeFull('http://pnet.kr:3900/v1/content/list')
     );

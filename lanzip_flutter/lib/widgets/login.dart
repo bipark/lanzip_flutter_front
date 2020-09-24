@@ -8,16 +8,36 @@ class LoginState extends State<Login> {
 
     print( ModalRoute.of(context).settings.arguments );
 
+    final _screenSize = MediaQuery.of(context).size;
+
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Login"),
-      ),
+      backgroundColor: Color(0xFF4A148C),
       body: Center(
-        child: RaisedButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          child: Text('Go back!'),
+        child: Container(
+          margin: EdgeInsets.all(20.0),
+          color: Colors.white,
+          height: _screenSize.height * 0.6,
+          child: Padding(
+            padding: EdgeInsets.all(18.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                TextFormField(
+                  decoration: InputDecoration(labelText: "Username"),
+                ),
+                TextFormField(
+                  obscureText: true,
+                  decoration: InputDecoration(labelText: "Password"),
+                ),
+                RaisedButton(
+                  color: Colors.red,
+                  textColor: Colors.white,
+                  child: Text("LOGIN"),
+                )
+              ],
+            )
+          ),
         ),
       ),
     );
